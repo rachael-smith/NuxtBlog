@@ -4,6 +4,7 @@
     <TheSidenav :show="displaySidenav" @close="displaySideNav= false"/>
     <nuxt />
   </div>
+  
 </template>
 
 <script>
@@ -20,7 +21,7 @@ export default {
     }
   }
 }
-</script>
+
 <style>
 
 html{

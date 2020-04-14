@@ -1,18 +1,31 @@
 <template>
     <div class="single-post-page">
         <section class="post">
-            <h1>Title of post</h1>
+            <h1>{{loadedPost.title}}</h1>
             <div class="post-details">
-                <div class="post-details"> Last updated on XXX </div>
-                <div class="post-details"> Written by NAME</div>
+                <div class="post-details"> Last updated on {{loadedPost.updatedDate}} </div>
+                <div class="post-details"> Written by {{loadedPost.author}}</div>
             </div>
-            <p class="post-content">Content of post</P>
+            <p class="post-content">{{loadedPost.content}}</P>
             <div class="post-feedback">
                 <p>Let me know what you think about the post, send email to <a href="mailto:imcool@test.com">imcool@test.com</a></p>
             </div>
         </section>
     </div>
 </template>
+<script>
+export default {
+  asyncData(context, callback){
+    setTimeout(()=> {
+      callback(null, {
+        loadedPost: [
+          {id: '1', title: 'First Post', previewText: 'this is my first post', content: 'jrferiowrepowqhreqlhrewqlkrjewklq', thumbnail: 'https://annenberg.usc.edu/sites/default/files/womenintech.jpg', isAdmin:false, updatedDate:'1/1/2020', author:'Rachael Smith'},
+        ]
+      })
+    },1000)
+  }
+}
+</script>
 
 <style scoped>
 .single-post-page {
