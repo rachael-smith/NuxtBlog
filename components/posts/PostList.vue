@@ -2,25 +2,13 @@
   <div class="home-page">
     <section class="post-list">
       <PostPreview
-        id="1"
-        :is-admin="isAdmin"
-        thumbnail="https://www.bsr.org/images/heroes/tech-against-trafficking-hero.jpg"
-        title="Post 1"
-        previewText="hello"
-      />
-      <PostPreview
-        id="2"
-        :is-admin="isAdmin"
-        thumbnail="https://annenberg.usc.edu/sites/default/files/womenintech.jpg"
-        title="Post 2"
-        previewText="hello 2"
-      />
-      <PostPreview
-        id="3"
-        :is-admin="isAdmin"
-        thumbnail="https://insuranceblog.accenture.com/wp-content/uploads/2019/09/Technology_Vision1.jpeg"
-        title="Post 3"
-        previewText="hello 3"
+        v-for="post in posts"
+        :key="post.id"
+        :id="post.id"
+        :is-admin="post.isAdmin"
+        :thumbnail="post.thumbnail"
+        :title="post.title"
+        :previewText="post.previewText"
       />
     </section>
   </div>
@@ -35,6 +23,10 @@ export default {
     isAdmin:{
       type: Boolean,
       default: false
+    },
+    posts: {
+      type: Array,
+      required: true
     }
   }
 };

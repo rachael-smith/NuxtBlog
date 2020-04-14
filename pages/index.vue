@@ -3,7 +3,7 @@
     <section class="intro">
       <h1>Get the latest tech news</h1>
     </section>
-    <PostList/>
+    <PostList :posts="loadedPosts"/>
   </div>
 </template>
 
@@ -12,7 +12,16 @@ import PostList from "@/components/posts/PostList";
 export default {
   components: {
     PostList
-  }
+  },
+  asyncData(context, callback){
+    setTimeout(() => {
+      callback(null, {       
+        loadedPosts: [     
+          {id: '1', title: 'First Post', previewText: 'this is my first post', thumbnail: 'https://annenberg.usc.edu/sites/default/files/womenintech.jpg'},
+          {id: '2', title: 'Second Post', previewText: 'this is my second post', thumbnail: 'https://annenberg.usc.edu/sites/default/files/womenintech.jpg'}
+      ]});
+    }, 1500);
+  },
 };
 </script>
 
